@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "id": 99,
+      "name": "Ivan",
+      "password": "12345"
+    },
+    {
+      "login": "login",
+      "password": "password",
+      "id": 100
+    }
+  ],
+  "contacts": [
+    {
+      "userId": "99",
+      "id": 1,
+      "name": "Maria",
+      "phone": 70001112233
+    },
+    {
+      "userId": "99",
+      "id": 2,
+      "name": "Petr",
+      "phone": 70007778899
+    }
+  ]
+}
