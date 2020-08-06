@@ -1,0 +1,28 @@
+.contact-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.contact-cell {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-right: 16px;
+  min-width: 150px;
+}
+
+.contact-icon {
+  margin-right: 8px;
+}
+
+.contact-fill {
+  flex: 1;
+}
+
+.contact-service-icon {
+  cursor: pointer;
+}
+
+.icon-red {
+  color: rgb(189, 44, 44);
+}
