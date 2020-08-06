@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { AuthContext } from '../context/authContext'
+import { AppContext } from '../context/appContext'
 import { Preloader } from '../components/Preloader/Preloader'
 import { authRequestOptions } from '../utils/authRequestOptions'
 export default class Login extends Component {
@@ -30,15 +30,15 @@ export default class Login extends Component {
         throw new Error(req.message || 'Something went wrong')
       }
 
-      loginFn(req)
-      authHandlerFn(!!req)
-
       this.setState({
         name: '',
         password: '',
+        loading: false,
       })
+
+      loginFn(req)
+      authHandlerFn(!!req, req.id)
     } catch (error) {
-    } finally {
       this.setState({
         loading: false,
       })
@@ -51,7 +51,7 @@ export default class Login extends Component {
     const isDisabled = !name || !password || loading
 
     return (
-      <AuthContext.Consumer>
+      <AppContext.Consumer>
         {({ request, login, authHandler }) => {
           return (
             <div className="row">
@@ -66,7 +66,6 @@ export default class Login extends Component {
                           id="name"
                           type="text"
                           name="name"
-                          placeholder="Name"
                           onChange={this.changeHandler}
                           value={name}
                         />
@@ -81,7 +80,7 @@ export default class Login extends Component {
                           onChange={this.changeHandler}
                           value={password}
                         />
-                        <label htmlFor="email">Password</label>
+                        <label htmlFor="password">Password</label>
                       </div>
                     </div>
                   </div>
@@ -102,7 +101,7 @@ export default class Login extends Component {
             </div>
           )
         }}
-      </AuthContext.Consumer>
+      </AppContext.Consumer>
     )
   }
 }
