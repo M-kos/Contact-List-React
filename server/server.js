@@ -14,13 +14,14 @@ function isAuthorized(req, res, next) {
   }
   
   if (req.headers.authorization) {
-    const id = req.headers.authorization
-    
+    const id = +req.headers.authorization
     const user = router.db.__wrapped__.users.filter(user => user.id === id)
     
     if (user && user.length) {
       req.user = user[0]
       next()
+    } else {
+      res.sendStatus(401)
     }
   }
 
@@ -39,15 +40,9 @@ server.use(bodyParser.urlencoded({extended: true}))
 server.use(bodyParser.json())
 server.use(isAuthorized)
 server.post('/login', (req, res) => {
-  console.log('POST');
   res.statusCode = 200
   res.setHeader('Content-Type', 'application/json')
   res.json(req.user)
-  // res.status(200).json(req.user)
-  console.log('AFTER1');
-})
-server.use((req, res) => {
-  console.log('AFTER2');
 })
 server.use(router)
 server.listen(3001, () => {
