@@ -4,25 +4,37 @@
       "id": 99,
       "name": "Ivan",
       "password": "12345"
-    },
-    {
-      "login": "login",
-      "password": "password",
-      "id": 100
     }
   ],
   "contacts": [
     {
-      "userId": "99",
+      "userId": 99,
       "id": 1,
       "name": "Maria",
       "phone": 70001112233
     },
     {
-      "userId": "99",
+      "userId": 99,
       "id": 2,
       "name": "Petr",
       "phone": 70007778899
+    },
+    {
+      "name": "Chrome",
+      "phone": "999999999",
+      "id": 3
+    },
+    {
+      "name": "Maria",
+      "phone": "77777777",
+      "userId": 99,
+      "id": 4
+    },
+    {
+      "name": "Agafon",
+      "phone": "0000000000",
+      "userId": 99,
+      "id": 5
     }
   ]
 }
