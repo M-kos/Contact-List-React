@@ -1,8 +1,8 @@
 const jsonServer = require('json-server')
 const bodyParser = require('body-parser')
+const path = require('path')
 const server = jsonServer.create()
-const router = jsonServer.router('db.json')
-const middlewares = jsonServer.defaults()
+const router = jsonServer.router(path.join(__dirname, 'db.json'))
 
 function isAuthorized(req, res, next) {
   if (req.path === '/login' && req.method !== 'POST') {
