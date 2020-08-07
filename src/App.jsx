@@ -6,7 +6,7 @@ import { Http } from './services/http'
 import { login, logout } from './utils/login'
 import { authRequestOptions } from './utils/authRequestOptions'
 
-import 'materialize-css'
+import 'materialize-css/dist/js/materialize.min.js'
 import './App.css'
 
 export default class App extends Component {
