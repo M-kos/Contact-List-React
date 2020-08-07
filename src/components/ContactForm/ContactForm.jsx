@@ -1,12 +1,30 @@
 import React, { Component } from 'react'
 import { Preloader } from '../Preloader/Preloader'
 
-import './CreateForm.css'
+import './ContactForm.css'
 
-export class CreateForm extends Component {
+export class ContactForm extends Component {
   state = {
     name: '',
     phone: '',
+  }
+
+  componentDidMount() {
+    const { changeableContact } = this.props
+
+    if (changeableContact.name || changeableContact.phone) {
+      this.setState(
+        {
+          name: changeableContact.name || '',
+          phone: changeableContact.phone || '',
+        },
+        () => {
+          if (window.M) {
+            window.M.updateTextFields()
+          }
+        }
+      )
+    }
   }
 
   changeHandler = (event) => {
@@ -16,7 +34,7 @@ export class CreateForm extends Component {
   }
 
   render() {
-    const { loading, createHandler } = this.props
+    const { loading, formHandler } = this.props
     const { name, phone } = this.state
     const isDisabled = !name && !phone
 
@@ -40,7 +58,7 @@ export class CreateForm extends Component {
                 <div className="input-field">
                   <input
                     id="phone"
-                    type="number"
+                    type="text"
                     name="phone"
                     value={phone}
                     onChange={this.changeHandler}
@@ -52,11 +70,11 @@ export class CreateForm extends Component {
                 <button
                   className="btn create-form-btn"
                   disabled={isDisabled}
-                  onClick={() => createHandler({ name, phone })}
+                  onClick={() => formHandler({ name, phone })}
                 >
-                  Create
+                  Save
                 </button>
-                <button className="btn create-form-btn" onClick={createHandler}>
+                <button className="btn create-form-btn" onClick={formHandler}>
                   Close
                 </button>
               </div>
