@@ -1,16 +1,20 @@
 export function contactsRequestOptions(id, method, body) {
-  let requestUrl = `/contacts?id=${id}`
+  let requestUrl = ''
 
-  if (method === 'GET') {
-    requestUrl = `/contacts?userId=${id}`
-  }
-
-  if (method === 'POST') {
-    requestUrl = `/contacts`
-  }
-
-  if (method === 'DELETE') {
-    requestUrl = `/contacts/${id}`
+  switch (method) {
+    case 'GET':
+      requestUrl = `/contacts?userId=${id}`
+      break;
+    case 'POST':
+      requestUrl = `/contacts`
+      break;
+    case 'DELETE':
+    case 'PATCH':
+      requestUrl = `/contacts/${id}`
+      break;
+    default:
+      requestUrl = `/contacts?id=${id}`
+      break;
   }
 
   return {
