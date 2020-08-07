@@ -16,6 +16,9 @@ export class Http {
       return data
     } catch (error) {
       console.error(error.message || error)
+      if(window.M) {
+        window.M.toast({html: error.message || error, classes: 'red'})
+      }
       throw new Error(error)
     }
   }
