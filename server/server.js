@@ -32,6 +32,8 @@ function isAuthorized(req, res, next) {
     if (user && user.length) {
       req.user = user[0]
       next()
+    } else {
+      res.sendStatus(401)
     }
   }
 }
