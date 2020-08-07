@@ -9,6 +9,12 @@ export default class Login extends Component {
     loading: false,
   }
 
+  componentDidMount() {
+    if (window.M) {
+      window.M.updateTextFields()
+    }
+  }
+
   changeHandler = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
