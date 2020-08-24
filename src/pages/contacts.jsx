@@ -5,7 +5,7 @@ import { ContactList } from '../components/ContactList/ContactLict'
 export const Contacts = () => {
   const logoutHandler = (logoutFn, authFn) => {
     logoutFn()
-    authFn(false)
+    authFn()
   }
 
   return (
